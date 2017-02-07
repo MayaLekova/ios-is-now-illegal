@@ -38,6 +38,9 @@
                                 <rect key="frame" x="116" y="152" width="143" height="44"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                 <state key="normal" title="ILLEGALIZE!"/>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Vzo-0e-Z0q"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Credits for the service: http://isnowillegal.com/" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Msk-2U-jxu">
                                 <rect key="frame" x="66" y="574" width="243" height="48"/>
@@ -70,6 +73,9 @@
                             <constraint firstItem="ztm-PB-Qdo" firstAttribute="centerX" secondItem="enU-bR-lHQ" secondAttribute="centerX" id="zrX-fS-lj8"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="textBox" destination="Olc-qV-4nq" id="h2i-P3-YtI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
