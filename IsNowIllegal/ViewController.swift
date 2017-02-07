@@ -7,16 +7,36 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ViewController: UIViewController {
     @IBOutlet weak var textBox: UITextField!
+    @IBOutlet weak var resultMeme: UIImageView!
     
     @IBAction func buttonPressed(_ sender: UIButton) {
         guard let enteredText = self.textBox.text else {
             return
         }
         // TODO:
-        // Make a PUT to https://is-now-illegal.firebaseio.com/queue/tasks.json with the format { task: 'gif', word: enteredText }
+        // 1. Make a PUT to https://is-now-illegal.firebaseio.com/queue/tasks.json with the format { task: 'gif', word: enteredText }
+        // 2. Get the result from https://is-now-illegal.firebaseio.com/gifs/TEST.json -> "url"
+        // 3. Move the following to the response
+        let url = URL(string: "https://storage.googleapis.com/is-now-illegal.appspot.com/gifs/TEST.gif")
+//        let url = URL(string: "https://media.giphy.com/media/9g0cXfCFIj8Aw/giphy.gif")
+        self.resultMeme.kf.setImage(with: url) {
+            image, error, cacheType, imageURL in
+            if let errorOccured = error {
+                print("ERROR while getting gif with URL: \(imageURL)")
+                print(errorOccured)
+            }
+        }
+    }
+    
+    override func loadView() {
+        let imageView = AnimatedImageView()
+        self.resultMeme = imageView
+        
+        super.loadView()
     }
     
     override func viewDidLoad() {
