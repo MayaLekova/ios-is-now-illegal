@@ -23,11 +23,13 @@ PODS:
   - GoogleToolboxForMac/NSData+zlib (2.1.1):
     - GoogleToolboxForMac/Defines (= 2.1.1)
   - MapleBacon (3.0.1)
+  - MBProgressHUD (1.0.0)
 
 DEPENDENCIES:
   - Alamofire (~> 4.3)
   - Firebase (~> 3.12)
   - MapleBacon
+  - MBProgressHUD (~> 1.0.0)
 
 SPEC CHECKSUMS:
   Alamofire: 856a113053a7bc9cbe5d6367a555d773fc5cfef7
@@ -39,7 +41,8 @@ SPEC CHECKSUMS:
   GoogleSymbolUtilities: 631ee17048aa5e9ab133470d768ea997a5ef9b96
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   MapleBacon: 8fb0c45a0f147049ad49af6b36ac04a649baa74d
+  MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
 
-PODFILE CHECKSUM: 6be5cc4d429a932d5ec89254e374b1fbab9ba3cc
+PODFILE CHECKSUM: 51b8ea694d57039c18daf7b03da012f43923c986
 
 COCOAPODS: 1.1.1

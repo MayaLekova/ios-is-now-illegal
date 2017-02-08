@@ -9,10 +9,14 @@
 import UIKit
 import MapleBacon
 import Alamofire
+import MBProgressHUD
 
 class ViewController: UIViewController {
     @IBOutlet weak var textBox: UITextField!
     @IBOutlet weak var resultMeme: UIImageView!
+    @IBOutlet var ownView: UIView!
+    
+    var loadingNotification: MBProgressHUD?
     
     @IBAction func buttonPressed(_ sender: UIButton) {
         guard let enteredText = self.textBox.text?.uppercased() else {
@@ -25,15 +29,21 @@ class ViewController: UIViewController {
             "word": enteredText
         ]
         let url = "https://is-now-illegal.firebaseio.com/queue/tasks.json"
-        
+
+        self.showLoadingNotification()
+
         Alamofire.request(url, method: .put, parameters: parameters, encoding: JSONEncoding.default).responseString { response in
             if let error = response.error {
                 print("ERROR: Generating gif with text\(enteredText): \(error)")
+                // TODO: Show error
+                self.hideLoadingNotification()
                 return
             }
             
             // TODO: check if this is a strong retain cycle
             self.getGifUrl() { urlString in
+                self.hideLoadingNotification()
+
                 guard let url = URL(string: urlString) else {
                     print("ERROR: Invalid URL for generated gif: \(urlString)")
                     return
@@ -66,7 +76,17 @@ class ViewController: UIViewController {
             }
         }
     }
+
+    func showLoadingNotification() {
+        self.loadingNotification = MBProgressHUD.showAdded(to: self.ownView, animated: true)
+        loadingNotification?.mode = MBProgressHUDMode.indeterminate
+        loadingNotification?.label.text = "Illegalizing..."
+    }
     
+    func hideLoadingNotification() {
+        self.loadingNotification?.hide(animated: true)
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
