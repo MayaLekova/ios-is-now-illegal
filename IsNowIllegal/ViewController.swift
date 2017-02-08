@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Kingfisher
 import MapleBacon
 
 class ViewController: UIViewController {
@@ -30,13 +29,6 @@ class ViewController: UIViewController {
                 }
             }
         }
-    }
-    
-    override func loadView() {
-        let imageView = AnimatedImageView()
-        self.resultMeme = imageView
-        
-        super.loadView()
     }
     
     override func viewDidLoad() {

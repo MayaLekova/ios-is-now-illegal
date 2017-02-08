@@ -21,12 +21,10 @@ PODS:
   - GoogleToolboxForMac/Defines (2.1.1)
   - GoogleToolboxForMac/NSData+zlib (2.1.1):
     - GoogleToolboxForMac/Defines (= 2.1.1)
-  - Kingfisher (3.3.3)
   - MapleBacon (3.0.1)
 
 DEPENDENCIES:
   - Firebase (~> 3.12)
-  - Kingfisher (~> 3.3)
   - MapleBacon
 
 SPEC CHECKSUMS:
@@ -37,9 +35,8 @@ SPEC CHECKSUMS:
   GoogleInterchangeUtilities: d5bc4d88d5b661ab72f9d70c58d02ca8c27ad1f7
   GoogleSymbolUtilities: 631ee17048aa5e9ab133470d768ea997a5ef9b96
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
-  Kingfisher: 893215a42e5c2164e916f69463c68003092b104c
   MapleBacon: 8fb0c45a0f147049ad49af6b36ac04a649baa74d
 
-PODFILE CHECKSUM: 83dd132164df84a61618d7113e8933c4d4cbe455
+PODFILE CHECKSUM: 49eb03f0c11668489506aef7868894686d716362
 
 COCOAPODS: 1.1.1

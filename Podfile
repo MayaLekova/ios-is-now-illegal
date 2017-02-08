@@ -7,7 +7,6 @@ target 'IsNowIllegal' do
 
   # Pods for IsNowIllegal
   pod 'Firebase', '~> 3.12'
-  pod 'Kingfisher', '~> 3.3'
   pod 'MapleBacon'
 
   target 'IsNowIllegalTests' do
