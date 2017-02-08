@@ -8,6 +8,7 @@
 
 import UIKit
 import Kingfisher
+import MapleBacon
 
 class ViewController: UIViewController {
     @IBOutlet weak var textBox: UITextField!
@@ -21,13 +22,12 @@ class ViewController: UIViewController {
         // 1. Make a PUT to https://is-now-illegal.firebaseio.com/queue/tasks.json with the format { task: 'gif', word: enteredText }
         // 2. Get the result from https://is-now-illegal.firebaseio.com/gifs/TEST.json -> "url"
         // 3. Move the following to the response
-        let url = URL(string: "https://storage.googleapis.com/is-now-illegal.appspot.com/gifs/TEST.gif")
-//        let url = URL(string: "https://media.giphy.com/media/9g0cXfCFIj8Aw/giphy.gif")
-        self.resultMeme.kf.setImage(with: url) {
-            image, error, cacheType, imageURL in
-            if let errorOccured = error {
-                print("ERROR while getting gif with URL: \(imageURL)")
-                print(errorOccured)
+
+        if let url = URL(string: "https://storage.googleapis.com/is-now-illegal.appspot.com/gifs/TEST.gif") {
+            self.resultMeme.setImage(withUrl: url) { instance, error in
+                if let error = error {
+                    print("ERROR while downloading image: \(error)")
+                }
             }
         }
     }
