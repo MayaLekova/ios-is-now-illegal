@@ -8,6 +8,7 @@ target 'IsNowIllegal' do
   # Pods for IsNowIllegal
   pod 'Firebase', '~> 3.12'
   pod 'MapleBacon'
+  pod 'Alamofire', '~> 4.3'
 
   target 'IsNowIllegalTests' do
     inherit! :search_paths
