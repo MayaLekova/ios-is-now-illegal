@@ -18,12 +18,23 @@ class ViewController: UIViewController {
     
     var loadingNotification: MBProgressHUD?
     
+    var enteredText: String? {
+        guard let text = self.textBox.text?.uppercased() else {
+            return nil
+        }
+        guard !text.isEmpty else {
+            return nil
+        }
+        
+        let trimToIdx = min(text.characters.count, 10)
+        return text.substring(to: text.index(text.startIndex, offsetBy: trimToIdx))
+    }
+    
     @IBAction func buttonPressed(_ sender: UIButton) {
-        guard let enteredText = self.textBox.text?.uppercased() else {
+        guard let enteredText = self.enteredText else {
             return
         }
-        // TODO: trim to 10 characters
-        
+
         let parameters: Parameters = [
             "task": "gif",
             "word": enteredText
@@ -32,7 +43,8 @@ class ViewController: UIViewController {
 
         self.showLoadingNotification()
 
-        Alamofire.request(url, method: .put, parameters: parameters, encoding: JSONEncoding.default).responseString { response in
+        Alamofire.request(url, method: .put, parameters: parameters, encoding: JSONEncoding.default).responseString {
+            [unowned self] response in
             if let error = response.error {
                 print("ERROR: Generating gif with text\(enteredText): \(error)")
                 // TODO: Show error
@@ -40,7 +52,6 @@ class ViewController: UIViewController {
                 return
             }
             
-            // TODO: check if this is a strong retain cycle
             self.getGifUrl() { urlString in
                 self.hideLoadingNotification()
 
@@ -59,7 +70,7 @@ class ViewController: UIViewController {
     }
     
     func getGifUrl(callback: @escaping (String) -> Void) {
-        guard let enteredText = self.textBox.text?.uppercased() else {
+        guard let enteredText = self.enteredText else {
             return
         }
 
