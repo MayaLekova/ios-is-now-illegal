@@ -6,7 +6,6 @@ target 'IsNowIllegal' do
   use_frameworks!
 
   # Pods for IsNowIllegal
-  pod 'Firebase', '~> 3.12'
   pod 'MapleBacon'
   pod 'Alamofire', '~> 4.3'
   pod 'MBProgressHUD', '~> 1.0.0'
