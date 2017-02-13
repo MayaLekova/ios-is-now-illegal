@@ -43,7 +43,7 @@ class ViewController: UIViewController {
 
         self.showLoadingNotification()
 
-        Alamofire.request(url, method: .put, parameters: parameters, encoding: JSONEncoding.default).responseString {
+        Alamofire.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default).responseString {
             [unowned self] response in
             if let error = response.error {
                 print("ERROR: Generating gif with text\(enteredText): \(error)")
@@ -52,20 +52,22 @@ class ViewController: UIViewController {
                 return
             }
             
-            self.getGifUrl() { urlString in
-                self.hideLoadingNotification()
-
-                guard let url = URL(string: urlString) else {
-                    print("ERROR: Invalid URL for generated gif: \(urlString)")
-                    return
-                }
-                
-                self.resultMeme.setImage(withUrl: url) { instance, error in
-                    if let error = error {
-                        print("ERROR while downloading image: \(error)")
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(10), execute: {
+                self.getGifUrl() { urlString in
+                    self.hideLoadingNotification()
+                    
+                    guard let url = URL(string: urlString) else {
+                        print("ERROR: Invalid URL for generated gif: \(urlString)")
+                        return
+                    }
+                    
+                    self.resultMeme.setImage(withUrl: url) { instance, error in
+                        if let error = error {
+                            print("ERROR while downloading image: \(error)")
+                        }
                     }
                 }
-            }
+            })
         }
     }
     
